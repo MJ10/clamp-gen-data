@@ -1,0 +1,10 @@
+*.pyc
+data/features/*
+clamp_common_eval/training/model/*
+**/.ipynb_checkpoints
+__pycache__
+!clamp_common_eval/training/model/D1_target_MLP_best_Layer_1024.pt
+!clamp_common_eval/training/model/D2_target_MLP_best_Layer_1024.pt
+!clamp_common_eval/training/model/D2_title_MLP_best_Layer_1024.pt
+.vscode
+*.egg-info
