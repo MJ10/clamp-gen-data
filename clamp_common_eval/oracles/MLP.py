@@ -39,7 +39,7 @@ class MLPOracle(Oracle):
         if source not in ["D2_target", "D1_target", 'D2_target_fid1', 'D2_target_fid2']:
             raise NotImplementedError("oracle not defined")
         self.best_model_path = os.path.join(
-            root, "../data/oracles/" + source +"_MLP_best_Layer_1024_{}.pt".format(feature)
+            root, "../data/oracles/" + source +"_MLP_best_Layer_"+str(n_hid)+"_{}.pt".format(feature)
         )
         self.model.load_state_dict(torch.load(self.best_model_path, map_location=torch.device('cpu')))
         self.model.eval()
