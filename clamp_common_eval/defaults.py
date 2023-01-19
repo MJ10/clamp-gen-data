@@ -44,7 +44,7 @@ def get_test_oracle(source="D2_target", model="RandomForest", feature="AlBert", 
         an Oracle that we can use to make predictions,
         e.g score = oracle("AAAAAA")
     """
-    assert source in ["D1_target", "D2_target", "D1_title", "D2_title"]
+    assert source in ["D1_target", "D2_target", "D1_title", "D2_title", "D2_target_fid1", "D2_target_fid2"]
     if model == "RandomForest":
         return RandomForestOracle(source, feature)
     elif model == "MLP":

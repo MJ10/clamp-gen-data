@@ -25,14 +25,18 @@ class CTDDDataset(data.Dataset):
 class MLPOracle(Oracle):
     def __init__(self, source, feature):
         root = os.path.join(os.path.split(__file__)[0], "../")
+        if source in ['D2_target_fid1', 'D2_target_fid2']:
+            n_hid =512
+        else:
+            n_hid = 1024
         # For ProtTrans
         if feature == "T5":
-            self.model = MLP(1024, 2, 1024, dropout_rate=0.5)
+            self.model = MLP(1024, 2, n_hid, dropout_rate=0.5)
         elif feature == "AlBert":
-            self.model = MLP(4096, 2, 1024, dropout_rate=0.5)
+            self.model = MLP(4096, 2, n_hid, dropout_rate=0.5)
         # For CTDD 
         # self.model = MLP(195, 2, 1024, dropout_rate=0.5)
-        if source not in ["D2_target", "D1_target"]:
+        if source not in ["D2_target", "D1_target", 'D2_target_fid1', 'D2_target_fid2']:
             raise NotImplementedError("oracle not defined")
         self.best_model_path = os.path.join(
             root, "../data/oracles/" + source +"_MLP_best_Layer_1024_{}.pt".format(feature)
